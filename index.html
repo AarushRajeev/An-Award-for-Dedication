@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell Tribute</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00FF00;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        #text {
+            white-space: pre-wrap;
+            font-size: 20px;
+            width: 80%;
+            max-width: 800px;
+            word-break: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div id="text"></div>
+    <script>
+        const text = `Hey [FRIEND_NAME]...
+
+Throughout the entire process of organizing the farewell, [FRIEND_NAME] displayed unmatched dedication and effort. 
+She took the responsibility of ensuring everything was in place, making sure that every attendee had a great experience. 
+
+From the very beginning, she designed and distributed the registration form, making it easy for everyone to sign up. 
+She meticulously checked and tracked payments, ensuring there were no discrepancies, even going as far as creating a comprehensive 
+Excel spreadsheet detailing each member’s class, name, and the exact time they made their payment. She took full accountability 
+for ensuring no payment was missed.
+
+Beyond the technical aspects, [FRIEND_NAME] showed immense generosity. She took the initiative to buy return gifts for all attendees, 
+and when faced with the possibility of more people arriving than expected, she was even willing to give up the organizers' gifts to make 
+sure that every guest received something. Her selflessness truly stood out.
+
+Her efforts were not just about logistics; she genuinely cared about making this event special for everyone. She spent sleepless nights 
+planning, handling last-minute changes, and ensuring that no detail was overlooked. Whenever a problem arose, she tackled it head-on, 
+never letting the stress get in the way of her commitment to making this farewell a success.
+
+Without her dedication, this farewell would not have been as well-organized and memorable as it was. Her passion and hard work ensured 
+that everything ran smoothly, allowing everyone to enjoy the event without worrying about the details. 
+
+[FRIEND_NAME], your hard work did not go unnoticed. This website is a small token of appreciation for everything you did. 
+Your commitment and selflessness have made a lasting impact, and we are all grateful for everything you put into this event.`;
+
+        let index = 0;
+        const textElement = document.getElementById("text");
+        const audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4386');
+
+        function playSound() {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.play().catch(error => console.error("Audio playback failed:", error));
+        }
+
+        function typeEffect() {
+            if (index < text.length) {
+                textElement.textContent += text.charAt(index);
+                if (text.charAt(index) !== ' ' && text.charAt(index) !== '\n') {
+                    playSound();
+                }
+                index++;
+                setTimeout(typeEffect, 80);
+            }
+        }
+        
+        window.onload = () => {
+            audio.volume = 0.5;
+            typeEffect();
+        };
+    </script>
+</body>
+</html>
