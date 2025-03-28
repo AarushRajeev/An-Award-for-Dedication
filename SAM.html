@@ -15,6 +15,8 @@
             height: 100vh;
             text-align: center;
             padding: 20px;
+            cursor: pointer;
+            flex-direction: column;
         }
         #text {
             white-space: pre-wrap;
@@ -22,42 +24,46 @@
             width: 80%;
             max-width: 800px;
             word-break: break-word;
+            display: none;
+        }
+        #clickMessage {
+            font-size: 18px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
+    <div id="clickMessage">Click anywhere to start...</div>
     <div id="text"></div>
     <script>
-        const text = `Hey [FRIEND_NAME]...
+        const text = `Hellooo Smaronika(Sam)!!!
 
-Throughout the entire process of organizing the farewell, [FRIEND_NAME] displayed unmatched dedication and effort. 
-She took the responsibility of ensuring everything was in place, making sure that every attendee had a great experience. 
+It's me, Aarussssssssssssshhhhhhhh! I just wanted to take a moment to thank you for being such a huge part of making this farewell event amazing. 
+You've put in so much effort and hard work, and honestly, I have nothing but respect for you. I'm making this because,I been vetti fr 💀
+but also because I wanted to show appreciation for everything you've done!
 
-From the very beginning, she designed and distributed the registration form, making it easy for everyone to sign up. 
-She meticulously checked and tracked payments, ensuring there were no discrepancies, even going as far as creating a comprehensive 
-Excel spreadsheet detailing each member’s class, name, and the exact time they made their payment. She took full accountability 
-for ensuring no payment was missed.
+First off, you made an absolutely professional-looking registration form on Google Forms. If I didn’t know you personally, 
+I would have never guessed it was made by you! You put in a ton of effort cross-checking all the details and even created 
+a whole Excel spreadsheet to track everything.
 
-Beyond the technical aspects, [FRIEND_NAME] showed immense generosity. She took the initiative to buy return gifts for all attendees, 
-and when faced with the possibility of more people arriving than expected, she was even willing to give up the organizers' gifts to make 
-sure that every guest received something. Her selflessness truly stood out.
+And the return gifts? Absolute GOATED FR. Premium, customized, and even a thank-you card with a short, meaningful, and memorable message. 
+You even traveled far just to get them! That’s some next-level dedication.
 
-Her efforts were not just about logistics; she genuinely cared about making this event special for everyone. She spent sleepless nights 
-planning, handling last-minute changes, and ensuring that no detail was overlooked. Whenever a problem arose, she tackled it head-on, 
-never letting the stress get in the way of her commitment to making this farewell a success.
+You spent so much time on this event, even sacrificing the time you could have spent drawing—something you really love doing. 
+That alone shows how much you cared about making this farewell special for everyone.
 
-Without her dedication, this farewell would not have been as well-organized and memorable as it was. Her passion and hard work ensured 
-that everything ran smoothly, allowing everyone to enjoy the event without worrying about the details. 
+Without your dedication and hard work, this farewell wouldn’t have been as incredible as it was. 
 
-[FRIEND_NAME], your hard work did not go unnoticed. This website is a small token of appreciation for everything you did. 
-Your commitment and selflessness have made a lasting impact, and we are all grateful for everything you put into this event.`;
+This website is just a small token of appreciation for everything you’ve done. You really made this event something unforgettable. 
+
+Also... When BOBA??? 😭.`;
 
         let index = 0;
         const textElement = document.getElementById("text");
+        const clickMessage = document.getElementById("clickMessage");
         const audio = new Audio('https://www.fesliyanstudios.com/play-mp3/4386');
 
         function playSound() {
-            audio.pause();
             audio.currentTime = 0;
             audio.play().catch(error => console.error("Audio playback failed:", error));
         }
@@ -72,11 +78,15 @@ Your commitment and selflessness have made a lasting impact, and we are all grat
                 setTimeout(typeEffect, 80);
             }
         }
-        
-        window.onload = () => {
-            audio.volume = 0.5;
-            typeEffect();
-        };
+
+        document.body.addEventListener('click', () => {
+            clickMessage.style.display = 'none';
+            textElement.style.display = 'block';
+            audio.play().then(() => {
+                audio.pause();
+                typeEffect();
+            }).catch(error => console.error("User interaction required for audio playback:", error));
+        }, { once: true });
     </script>
 </body>
 </html>
